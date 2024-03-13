@@ -1,5 +1,5 @@
 //
-//  GFAvatarImageView.swift
+//  GFSecondaryTitleLabel.swift
 //  GithubFollowers
 //
 //  Created by Mertcan Kırcı on 12.03.2024.
@@ -7,10 +7,8 @@
 
 import UIKit
 
-class GFAvatarImageView: UIImageView {
+class GFSecondaryTitleLabel: UILabel {
     
-    let placeholderImage = UIImage(named: "avatar-placeholder")!
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -20,10 +18,17 @@ class GFAvatarImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    init(fontSize: CGFloat) {
+        super.init(frame: .zero)
+        font = UIFont.systemFont(ofSize: fontSize, weight: .medium)
+        configure()
+    }
+    
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
-        layer.cornerRadius = 10
-        clipsToBounds = true
-        image = placeholderImage
+        textColor = .secondaryLabel
+        adjustsFontSizeToFitWidth = true
+        minimumScaleFactor = 0.90
+        lineBreakMode = .byTruncatingTail
     }
 }
